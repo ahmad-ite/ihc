@@ -21,12 +21,6 @@
 
 
 
-## Users for Testing:
-- Manager User : manager@test.com/manager@123
-- Employee User: employee@test.com/employee@123
-
-
-
 ## Open API
 - Go to `server` directory 
 - run `npm run swagger-autogen`
