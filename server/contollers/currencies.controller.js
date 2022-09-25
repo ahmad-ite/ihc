@@ -3,7 +3,6 @@ const { CryptoPrice } = require("../models/crypto-price");
 const { priceCustomId } = require("../const");
 const { CryptoHistory } = require("../models/crypto-history");
 const moment = require("moment");
-const mongoose = require("mongoose");
 
 /**
  *  fetch crypto history

@@ -11,6 +11,7 @@ const { cryptocompare } = require("../const");
 const syncCryptoHistoryCall = (fsyms = "ETH", tsyms = "USD") => {
   const url = `${cryptocompare.apiRoot}data/v2/histohour?fsym=${fsyms}&tsym=${tsyms}&limit=1&extraParams=${cryptocompare.appName}&api_key=${cryptocompare.apiKey}`;
 
+  
   return from(axios.get(url)).pipe(
     switchMap((res) => {
       if (!res) return EMPTY;
@@ -30,7 +31,7 @@ const syncCryptoHistoryCall = (fsyms = "ETH", tsyms = "USD") => {
  */
 const syncCryptoPriceCall = (fsyms = "ETH,BSC,BTC", tsyms = "USD,GBP") => {
   const url = `${cryptocompare.apiRoot}data/pricemulti?fsyms=${fsyms}&tsyms=${tsyms}&extraParams=${cryptocompare.appName}&api_key=${cryptocompare.apiKey}`;
-  console.log("url", url);
+  // console.log("url", url);
 
   return from(axios.get(url)).pipe(
     switchMap((res) => {
