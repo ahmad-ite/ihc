@@ -6,11 +6,8 @@
     "start": "node ./bin/www",
     "swagger-autogen": "node swagger.js",
     "start-dev": "nodemon index.js",
-    "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all",
-    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate && npm run seed",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
+    "test1": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "test": "jest --testEnvironment=node --runInBand ./tests"
   },
   "dependencies": {
     "@faker-js/faker": "^7.3.0",
@@ -27,20 +24,15 @@
     "faker": "^6.6.6",
     "http-errors": "~1.6.3",
     "jade": "^1.11.0",
-    "jest": "^28.1.0",
     "jsonwebtoken": "^8.5.1",
     "jstransformer": "^1.0.0",
+    "moment": "^2.29.4",
+    "mongodb-memory-server": "^8.9.3",
     "mongoose": "^6.6.1",
     "morgan": "~1.9.1",
-    "mysql2": "^2.3.0",
     "node-cron": "^3.0.2",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
     "pug": "^3.0.2",
     "rxjs": "^7.5.5",
-    "sequelize": "^6.20.1",
-    "sequelize-auto": "^0.8.4",
-    "sequelize-cli": "^6.4.1",
     "supertest": "^6.2.3",
     "swagger-autogen": "^2.21.2",
     "swagger-ui-express": "^4.4.0",
@@ -61,5 +53,10 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "debug": "1"
+    }
   }
 }

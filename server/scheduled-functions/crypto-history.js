@@ -1,12 +1,11 @@
 // @ts-nocheck
 const { from, catchError, switchMap, EMPTY, forkJoin, of } = require("rxjs");
-const { CryptoPrice } = require("../models/crypto-price");
-const { cryptocompare } = require("../const");
 const axios = require("axios").default;
 const { CryptoHistory } = require("../models/crypto-history");
+const { syncCryptoHistoryCall } = require("../services/cryptocompare.service");
 
 /**
- * use to sync history in DB
+ * fetch hourly history and store in DB
  *
  */
 const syncCryptoHistory = () => {
@@ -20,19 +19,20 @@ const syncCryptoHistory = () => {
   cryptos.forEach(function (cryptoCurruncy) {
     let opsCurrencyCall = {};
     curruncies.forEach(function (curruncy) {
-      // generate URL with curruncy && cryptoCurruncy for last hour {--:00}
-      let url = `${cryptocompare.apiRoot}data/v2/histohour?fsym=${cryptoCurruncy}&tsym=${curruncy}&limit=1&extraParams=${cryptocompare.appName}&api_key=${cryptocompare.apiKey}`;
-
-      opsCurrencyCall[curruncy] = syncCryptoHistoryCall(url);
+      // call history func for  curruncy && cryptoCurruncy for last hour {--:00}
+      opsCurrencyCall[curruncy] = syncCryptoHistoryCall(
+        cryptoCurruncy,
+        curruncy
+      );
     });
     opsCryptoCurrencyCall[cryptoCurruncy] = forkJoin({ ...opsCurrencyCall });
   });
- 
+
   //fetch history for all crypto currencies
   return forkJoin({ ...opsCryptoCurrencyCall }).pipe(
     switchMap((res) => {
-      if (!res ) return EMPTY;
-     
+      if (!res) return EMPTY;
+
       // create or update history for last hour {--:00}
       return from(
         CryptoHistory.findOneAndUpdate(
@@ -45,26 +45,6 @@ const syncCryptoHistory = () => {
     catchError((error) => {
       console.log("[syncCryptoHistory Error]", JSON.stringify(error));
       return error;
-    })
-  );
-};
-
-/**
- * Get open, high, low, close, volumefrom and volumeto from the hourly historical data
- *
- * @param  url: url call with appropirate url's params
- * @returns Observable<DataTypeHistory> |EMPTY | throw Error
- */
-const syncCryptoHistoryCall = (url) => {
-  return from(axios.get(url)).pipe(
-    switchMap((res) => {
-      if (!res) return EMPTY;
-      return of(res.data?.Data?.Data?.pop());
-    }),
-    catchError((error) => {
-      console.log("[syncCryptoHistoryCall Error]", JSON.stringify(error));
-      console.log("url", url);
-      throw new Error(JSON.stringify(error));
     })
   );
 };

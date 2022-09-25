@@ -1,0 +1,171 @@
+{
+  "priceData": {
+    "BSC": {
+      "USD": 0.0009454,
+      "GBP": 0.0008701
+    },
+    "BTC": {
+      "USD": 18907.44,
+      "GBP": 17402.63
+    },
+    "ETH": {
+      "USD": 1303.7,
+      "GBP": 1200.56
+    }
+  },
+
+  "historyData": [{
+      "BSC": {
+        "USD": {
+          "time": 1664110800,
+          "high": 0.0009545,
+          "low": 0.0009522,
+          "open": 0.0009545,
+          "volumefrom": 0,
+          "volumeto": 0,
+          "close": 0.0009538,
+          "conversionType": "multiply",
+          "conversionSymbol": "BTC"
+        },
+        "GBP": {
+          "time": 1664110800,
+          "high": 0.00123,
+          "low": 0.0008767,
+          "open": 0.00123,
+          "volumefrom": 0,
+          "volumeto": 0,
+          "close": 0.0008776,
+          "conversionType": "multiply",
+          "conversionSymbol": "BTC"
+        }
+      },
+      "BTC": {
+        "USD": {
+          "time": 1664110800,
+          "high": 19090.88,
+          "low": 19043.98,
+          "open": 19089.46,
+          "volumefrom": 209.73,
+          "volumeto": 3999133.72,
+          "close": 19075.36,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        },
+        "GBP": {
+          "time": 1664110800,
+          "high": 17566.45,
+          "low": 17533.07,
+          "open": 17564.4,
+          "volumefrom": 10.85,
+          "volumeto": 190410.6,
+          "close": 17554.44,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        }
+      },
+      "ETH": {
+        "USD": {
+          "time": 1664110800,
+          "high": 1323.62,
+          "low": 1315.62,
+          "open": 1323.61,
+          "volumefrom": 8957.07,
+          "volumeto": 11824211.57,
+          "close": 1321.22,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        },
+        "GBP": {
+          "time": 1664110800,
+          "high": 1217.87,
+          "low": 1211.54,
+          "open": 1217.85,
+          "volumefrom": 219.04,
+          "volumeto": 266305.87,
+          "close": 1215.55,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        }
+      }
+    },
+    {
+
+      "BSC": {
+        "USD": {
+          "time": 1664107200,
+          "high": 0.0009572,
+          "low": 0.0009527,
+          "open": 0.0009561,
+          "volumefrom": 0,
+          "volumeto": 0,
+          "close": 0.0009544,
+          "conversionType": "multiply",
+          "conversionSymbol": "BTC"
+        },
+        "GBP": {
+          "time": 1664107200,
+          "high": 0.001233,
+          "low": 0.0008772,
+          "open": 0.001233,
+          "volumefrom": 0,
+          "volumeto": 0,
+          "close": 0.0008781,
+          "conversionType": "multiply",
+          "conversionSymbol": "BTC"
+        }
+      },
+      "BTC": {
+        "USD": {
+          "time": 1664107200,
+          "high": 19144.69,
+          "low": 19054.35,
+          "open": 19121.53,
+          "volumefrom": 688.06,
+          "volumeto": 13143461.18,
+          "close": 19087.73,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        },
+        "GBP": {
+          "time": 1664107200,
+          "high": 17614.89,
+          "low": 17543.86,
+          "open": 17609.82,
+          "volumefrom": 56.37,
+          "volumeto": 991214.19,
+          "close": 17562.24,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        }
+      },
+      "ETH": {
+        "USD": {
+          "time": 1664107200,
+          "high": 1331.57,
+          "low": 1322.47,
+          "open": 1329.61,
+          "volumefrom": 13661.31,
+          "volumeto": 18118322.62,
+          "close": 1323.51,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        },
+        "GBP": {
+          "time": 1664107200,
+          "high": 1224.73,
+          "low": 1217.07,
+          "open": 1224.73,
+          "volumefrom": 232.02,
+          "volumeto": 283205.46,
+          "close": 1217.85,
+          "conversionType": "direct",
+          "conversionSymbol": ""
+        }
+      }
+
+    }
+  ]
+
+
+
+}

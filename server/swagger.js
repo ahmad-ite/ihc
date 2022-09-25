@@ -36,7 +36,7 @@ const doc = {
     components: {}            // by default: empty object (OpenAPI 3.x)
   };
 const outputFile = './swagger_output.json'
-const endpointsFiles = ['./routes/auth.js','./routes/schedules.js','./routes/users.js']
+const endpointsFiles = ['./routes/currencies.js']
 
 swaggerAutogen(outputFile, endpointsFiles,doc)
 

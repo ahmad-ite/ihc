@@ -21,12 +21,10 @@ app.use(function (req, res, next) {
 });
 
 var swaggerUi = require("swagger-ui-express");
+// @ts-ignore
 var swaggerFile = require("./swagger_output.json");
 
 require("dotenv").config();
-// require('./db');
-const PORT = process.env.NODE_DOCKER_PORT || 8080;
-console.log("port", PORT);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -39,9 +37,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
+//routs
 app.use("/", indexRouter);
 app.use("/api/v1", currenciesRouter);
 
+// documentation
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // catch 404 and forward to error handler
@@ -50,7 +50,6 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -61,18 +60,10 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-// if (process.env.NODE_ENV != "test") {
-//   app.listen(PORT, () => {
-//     console.log(`App running on port http://localhost:${PORT}`);
-//     console.log(
-//       `OpenAPI documentation available in http://localhost:${PORT}/doc`
-//     );
-//   });
-// }
-
+const PORT = process.env.PORT || 8080;
 const start = async () => {
   try {
-    await mongoose.connect(process.env.DB_URL);
+    await mongoose.connect(process.env.DB_URL, { dbName: process.env.DB_NAME });
     app.listen(PORT, () => {
       console.log(`App running on port http://localhost:${PORT}`);
       console.log(
@@ -87,15 +78,8 @@ const start = async () => {
 
 if (process.env.NODE_ENV != "test") {
   start();
-  // ADD CALL to execute your function(s)
+  // scheduled functions
   scheduledFunctions.initScheduledJobs();
-
-  //   const cron = require("node-cron");
-  // cron.schedule("*/2 * * * * *", function () {
-  //   console.log("---------------------");
-  //   console.log("running a task every 2 second");
-  //   //replace with any task
-  // });
 }
 
 module.exports = app;
